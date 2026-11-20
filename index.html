@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счётчик котекавскай любви</title>
+</head>
+<body>
+    <main>
+    <div class="container">
+    <div class="stickers">
+        <img src="TgSticker_21978196.png" alt="Котик в хлебе" class="sticker">
+        <img src="TgSticker_5a938f49.png" alt="Кот в акуле" class="sticker">
+    </div>
+
+    <h1>Счётчик котекавскай любви:3</h1>
+    <div class="counter">
+        <h2 id="days-counter">...</h2>
+    </div>
+    <p class="since-date">Мы вместе с 19.04.25</p>
+    </div>
+    </main>
+
+    <footer>
+        <h4>made by iamqusta, dedicated to lealee, my love♥</h4>
+    </footer>
+
+    <script>
+        const startDate = new Date(2025, 3, 19);
+
+        function getDayWord(days) {
+            const lastDigit = days % 10;
+            const lastTwoDigits = days % 100;
+
+            if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return 'дней';
+            if (lastDigit === 1) return 'день';
+            if (lastDigit >= 2 && lastDigit <= 4) return 'дня';
+            return 'дней';
+        }
+
+        function updateCounter() {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            
+            const diffTime = today - startDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById('days-counter').textContent = `${diffDays} ${getDayWord(diffDays)}`;
+        }
+
+        updateCounter();
+    </script>
+</body>
+</html>
